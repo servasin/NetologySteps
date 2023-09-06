@@ -1,0 +1,46 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+form {
+  padding: 10px 0;
+  border-bottom: 1px solid grey;
+}
+
+.steps-list-title {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+input[type=submit] {
+  cursor: pointer;
+}
+
+.steps-list-title > p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0 10px;
+  margin: 10px 0;
+  border: 1px solid grey;
+}
+
+ul > li {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+li > p {
+  display: inline;
+  margin: 0;
+}
+
+li > button {
+  cursor: pointer;
+}
