@@ -8,8 +8,7 @@ const [steps, setSteps] = useState([])
 
   function handleSubmit(item) {
     console.log(item);
-    setSteps(steps.concat(item))
-    e.preventDefault()
+    setSteps((oldValue)=> [...oldValue, item])
   }
 
   return (
