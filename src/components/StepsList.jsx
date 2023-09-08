@@ -1,4 +1,4 @@
-function StepsList({items}) {
+function StepsList({items, removeItem}) {
 
   return (
     <>
@@ -8,11 +8,11 @@ function StepsList({items}) {
       <p>Действия</p>
     </div>
       <ul>
-        {items.map((el, i) =>
-          <li key={i}>
+        {items.map((el) =>
+          <li key={el.id}>
             <p>{el.date}</p>
-            <p>{el.distance}</p>
-            <button>X</button>
+            <p>{el.dist}</p>
+            <button onClick={() => removeItem(el.id)}>X</button>
           </li>
         )}
       </ul>
