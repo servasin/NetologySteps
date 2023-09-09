@@ -18,33 +18,23 @@ function StepsApp() {
   }
 
   function handleSubmit(item) {
-    if(steps.length) {
-      const nextSteps = steps.map((el)=>{
-        if (el.date===item.date) {
-          return { id: el.id, date: el.date, dist: Number(el.dist) + Number(item.dist)}
+    if (steps.some(elem => elem.date === item.date)) {
+      const newSteps = steps.map((el)=>{
+        if (el.date === item.date) {
+          return { 
+            id: el.id, 
+            date: el.date, 
+            dist: parseFloat(el.dist) + parseFloat(item.dist)
+          }
         } else {
           return el
         }
       })
-      setSteps(nextSteps)
+      setSteps(newSteps)
     } else {
+      item.id = self.crypto.randomUUID();
       setSteps([...steps, item])
     }
-    
-    // setSteps((steps) =>
-    //   steps.map(el =>{
-    //   if (el.date===item.date) {
-    //     return { date: el.date, dist: Number(el.dist) + Number(item.dist)}
-    //   } else {
-    //   return item
-    //   }
-    // })
-    // )
-    // console.log(arrSumDist);
-    // setSteps(arrSumDist)
-
-    // setSteps((oldValue)=> [...oldValue, item])
-      // setSteps(steps.concat(item))
   }
 
   function removeItem(id) {
@@ -54,8 +44,7 @@ function StepsApp() {
   return (
     <>
       <StepsForm handleSubmit={handleSubmit}/>
-      {/* {steps.length ? <StepsList items={steps}/> : ''}  */}
-      <StepsList items={arrSorted(steps)} removeItem={removeItem}/>
+      {steps.length ? <StepsList items={arrSorted(steps)} removeItem={removeItem} /> : ''} 
     </>
   )
 }
