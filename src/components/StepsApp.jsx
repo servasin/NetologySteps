@@ -18,14 +18,33 @@ function StepsApp() {
   }
 
   function handleSubmit(item) {
-    // const items = steps.concat(item)
-
-    // items.reduce((prev, curr) => {
-    //   if (prev.date===curr.date) {
-          
+    if(steps.length) {
+      const nextSteps = steps.map((el)=>{
+        if (el.date===item.date) {
+          return { id: el.id, date: el.date, dist: Number(el.dist) + Number(item.dist)}
+        } else {
+          return el
+        }
+      })
+      setSteps(nextSteps)
+    } else {
+      setSteps([...steps, item])
+    }
+    
+    // setSteps((steps) =>
+    //   steps.map(el =>{
+    //   if (el.date===item.date) {
+    //     return { date: el.date, dist: Number(el.dist) + Number(item.dist)}
+    //   } else {
+    //   return item
     //   }
     // })
-    setSteps((oldValue)=> [...oldValue, item])
+    // )
+    // console.log(arrSumDist);
+    // setSteps(arrSumDist)
+
+    // setSteps((oldValue)=> [...oldValue, item])
+      // setSteps(steps.concat(item))
   }
 
   function removeItem(id) {
